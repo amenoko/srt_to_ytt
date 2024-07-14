@@ -16,6 +16,7 @@ get_milliseconds () {
     minutes=$(echo $1 | sed 's|^...||' | sed 's|:.*||')
     seconds=$(echo $1 | sed 's|^......||' | sed 's|,.*||')
     milliseconds=$(echo $1 | sed 's|.*,||')
+    # numbers with leading zeroes can be interpreted as octal if not otherwise specified
     echo $((10#$hours*60*60*1000 + 10#$minutes*60*1000 + 10#$seconds*1000 + 10#$milliseconds ))
 }
 
